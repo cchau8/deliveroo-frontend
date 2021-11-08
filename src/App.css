@@ -1,1 +1,131 @@
 /* Other rules */
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+header img {
+	width: 200px;
+	padding: 16px 0;
+	/* margin-left: 10%; */
+}
+
+.header-logo {
+	border-bottom: rgb(202, 202, 202) 1px solid;
+}
+h1 {
+	font-size: 32px;
+	font-weight: 700;
+	padding: 30px;
+}
+h2 {
+	font-size: 20px;
+	padding: 20px;
+	font-weight: 700;
+}
+h3 {
+	font-size: 18px;
+}
+
+.rest-header img {
+	width: 400px;
+}
+.rest-header {
+	display: flex;
+	/* margin: 0 10%; */
+}
+.rest-description {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.rest-description {
+	font-size: 20px;
+	font-weight: 300;
+}
+.sections {
+	width: 100%;
+	background-color: #eeeeee;
+	padding: 30px 10%;
+}
+.sections section {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+section ul {
+	display: flex;
+	max-width: 820px;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+section li {
+	width: 400px;
+	height: 160px;
+	flex: 0 1 48%;
+	display: flex;
+	flex-direction: row;
+	border-radius: 10px;
+	justify-content: space-between;
+	gap: 5px;
+	cursor: pointer;
+	transition: ease-in-out 0.1s;
+}
+section li:hover {
+	box-shadow: 0 0 11px rgba(63, 63, 63, 0.3);
+	transition: ease-in-out 0.1s;
+}
+section li p {
+	height: 32px;
+	line-height: 16px;
+	width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	font-size: 14px;
+	font-weight: 400;
+	color: #929292;
+}
+
+section li .description {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+section li .price {
+	display: flex;
+	gap: 25px;
+	color: #747474;
+}
+.meal {
+	background: #fff;
+	padding: 20px;
+}
+.meal img {
+	width: 120px;
+	height: 120px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.no-image {
+	justify-content: flex-start;
+	width: 400px;
+}
+.no-image p {
+	height: 50%;
+	width: 100%;
+	white-space: normal;
+}
+
+.popular {
+	color: #ffa52f;
+}
