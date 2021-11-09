@@ -102,3 +102,53 @@ hr {
 	font-size: 20px;
 	font-weight: 600;
 }
+
+.mobile-cart {
+	width: 90%;
+	cursor: pointer;
+	background-color: grey;
+	display: none;
+}
+@media (max-width: 768px) {
+	.not-mobile {
+		display: none;
+	}
+	.mobile {
+		position: sticky;
+		bottom: 0px;
+		width: 100%;
+		max-height: 400px;
+		padding-bottom: 85px;
+		z-index: 0;
+	}
+
+	.mobile-cart {
+		display: block;
+		position: sticky;
+		bottom: 10px;
+		margin: 10px auto;
+		background-color: var(--deliv-blue-color);
+		border: none;
+		border-radius: 10px;
+		padding: 20px 16px;
+		font-size: 18px;
+		letter-spacing: 1px;
+		font-family: inherit;
+		color: #fff;
+		font-weight: 600;
+		cursor: pointer;
+		width: 100%;
+	}
+	.close-cart {
+		position: relative;
+		left: 95%;
+		bottom: 10px;
+		background-color: transparent;
+		border: none;
+		font-size: 20px;
+		cursor: pointer;
+	}
+	.grey {
+		background-color: grey;
+	}
+}

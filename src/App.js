@@ -1,4 +1,5 @@
 import "./App.css";
+import "./components/media-queries.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import logo from "./assets/deliveroo-logo.png";
@@ -7,8 +8,9 @@ import Section from "./components/Section";
 import Cart from "./components/Cart/Cart";
 // FontAwesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-library.add(faPlus, faMinus);
+import { faPlus, faMinus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import Loading from "./components/Loading";
+library.add(faPlus, faMinus, faTimes);
 
 //import des composants
 
@@ -16,6 +18,7 @@ function App() {
 	const [data, setData] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 	const [cart, setCart] = useState([]);
+	const [showCart, setShowCart] = useState(false);
 
 	// Récupération des données du restaurant
 	const fetchData = async () => {
@@ -49,6 +52,12 @@ function App() {
 		setCart(newCart);
 	};
 
+	useEffect(() => {
+		if (cart.length === 0) {
+			setShowCart(false);
+		}
+	}, [cart]);
+
 	return (
 		<div>
 			<header>
@@ -57,31 +66,52 @@ function App() {
 						<img src={logo} alt="deliveroo-logo" />
 					</div>
 				</div>
-				{isLoading ? "chargement en cours" : <Hero data={data} />}
+				{isLoading ? <Loading /> : <Hero data={data} />}
 			</header>
 			<main>
 				{isLoading ? (
-					<div>"Chargement en cours...</div>
+					<div></div>
 				) : (
-					<div className="container">
-						<div className="sections ">
-							{data.categories
-								.filter((el) => {
-									return el.meals.length > 0;
-								})
-								.map((el, i) => {
-									return (
-										<Section
-											name={el.name}
-											meals={el.meals}
-											key={i}
-											addToCart={addToCart}
-										/>
-									);
-								})}
+					<>
+						<div className="container">
+							<div className="sections ">
+								{data.categories
+									.filter((el) => {
+										return el.meals.length > 0;
+									})
+									.map((el, i) => {
+										return (
+											<Section
+												name={el.name}
+												meals={el.meals}
+												key={i}
+												addToCart={addToCart}
+											/>
+										);
+									})}
+							</div>
+							<Cart cart={cart} setCart={setCart} mobile={false} />
 						</div>
-						<Cart cart={cart} setCart={setCart} />
-					</div>
+
+						{showCart && cart.length > 0 && (
+							<Cart
+								mobile={true}
+								cart={cart}
+								setCart={setCart}
+								showCart={showCart}
+								setShowCart={setShowCart}
+							/>
+						)}
+
+						<button
+							className={`mobile-cart${cart.length === 0 ? " grey" : ""}`}
+							onClick={() => {
+								setShowCart(true);
+							}}
+						>
+							{showCart ? "Valider " : "Voir "}le panier
+						</button>
+					</>
 				)}
 			</main>
 		</div>

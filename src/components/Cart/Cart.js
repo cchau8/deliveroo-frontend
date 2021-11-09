@@ -1,8 +1,8 @@
 import React from "react";
-import CartItem from "./CartItem";
 import "./cart.css";
+import CartInfo from "./CartInfo";
 
-const Cart = ({ cart, setCart }) => {
+const Cart = ({ cart, setCart, mobile, setShowCart, showCart }) => {
 	// Fonction du bouton plus du panier
 	const handlePlus = (id) => {
 		const newCart = [...cart];
@@ -35,43 +35,25 @@ const Cart = ({ cart, setCart }) => {
 	const total = (Number(subTotal()) + Number(deliveryFee)).toFixed(2);
 
 	return (
-		<div className="cart">
-			<button className={`confirm-cart${cart.length === 0 ? " empty" : ""}`}>
-				Valider mon panier
-			</button>
+		<div className={`cart${showCart ? " mobile" : " not-mobile"}`}>
+			{!showCart && (
+				<button className={`confirm-cart${cart.length === 0 ? " empty" : ""}`}>
+					Valider mon panier
+				</button>
+			)}
 			{cart.length === 0 ? (
 				<span className="empty-cart">Votre panier est vide</span>
 			) : (
-				<div className="cart-info">
-					<div className="cart-list">
-						{cart.map((el, i) => {
-							return (
-								<CartItem
-									key={i}
-									item={el}
-									handleMinus={handleMinus}
-									handlePlus={handlePlus}
-								/>
-							);
-						})}
-					</div>
-					<hr />
-					<div className="sub">
-						<div className="subtotal">
-							<span>Sous-total : </span>
-							<span>{subTotal()} €</span>
-						</div>
-						<div className="delivery-fee">
-							<span>Frais de livraison : </span>
-							<span>{deliveryFee} €</span>
-						</div>
-					</div>
-					<hr />
-					<div className="total">
-						<span>Total : </span>
-						<span>{total} €</span>
-					</div>
-				</div>
+				<CartInfo
+					showCart={showCart}
+					setShowCart={setShowCart}
+					cart={cart}
+					handleMinus={handleMinus}
+					handlePlus={handlePlus}
+					subTotal={subTotal}
+					deliveryFee={deliveryFee}
+					total={total}
+				/>
 			)}
 		</div>
 	);
