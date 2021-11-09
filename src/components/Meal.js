@@ -1,8 +1,15 @@
 import React from "react";
 
-const Meal = ({ title, description, price, image, popular }) => {
+const Meal = ({ meal, addToCart }) => {
+	const { title, description, price, picture, popular, id } = meal;
+
 	return (
-		<li className={`meal${image ? "" : " no-image"}`}>
+		<li
+			className={`meal${picture ? "" : " no-image"}`}
+			onClick={() => {
+				addToCart(id, title, price);
+			}}
+		>
 			<div className="description">
 				<h3>{title}</h3> <p>{description}</p>
 				<div className="price">
@@ -11,7 +18,7 @@ const Meal = ({ title, description, price, image, popular }) => {
 				</div>
 			</div>
 
-			{image && <img src={image} alt="" />}
+			{picture && <img src={picture} alt="" />}
 		</li>
 	);
 };

@@ -1,17 +1,16 @@
 import React from "react";
-
-const RestaurantHeader = ({ data }) => {
+import "./hero.css";
+const Hero = ({ data }) => {
 	const restaurant = data.restaurant;
 	return (
-		<div className="rest-header container">
-			<div className="rest-description">
+		<div className="hero container">
+			<div className="hero-description">
 				<h1>{restaurant.name}</h1>
 				<p>{restaurant.description}</p>
 			</div>
-
 			<img src={restaurant.picture} alt="restaurant-header" />
 		</div>
 	);
 };
 
-export default RestaurantHeader;
+export default Hero;

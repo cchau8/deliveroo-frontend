@@ -2,57 +2,43 @@
 * {
 	box-sizing: border-box;
 }
+:root {
+	--title-color: #2e3333;
+	--paragraph-color: #85909d;
+	--text-color: #808494;
+	--deliv-blue-color: #01ccbc;
+	--grey: #8b9a9b;
+	--dark-grey: #585858;
+}
 body {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+main {
+	background-color: #eeeeee;
+}
+main .container {
+	display: flex;
+	padding: 10px 0;
+	justify-content: space-around;
 }
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
 }
 
-header img {
-	width: 200px;
-	padding: 16px 0;
-	/* margin-left: 10%; */
-}
-
-.header-logo {
-	border-bottom: rgb(202, 202, 202) 1px solid;
-}
-h1 {
-	font-size: 32px;
-	font-weight: 700;
-	padding: 30px;
-}
 h2 {
 	font-size: 20px;
 	padding: 20px;
 	font-weight: 700;
+	color: var(--title-color);
 }
 h3 {
 	font-size: 18px;
+	color: var(--title-color);
 }
 
-.rest-header img {
-	width: 400px;
-}
-.rest-header {
-	display: flex;
-	/* margin: 0 10%; */
-}
-.rest-description {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-}
-.rest-description {
-	font-size: 20px;
-	font-weight: 300;
-}
 .sections {
-	width: 100%;
-	background-color: #eeeeee;
-	padding: 30px 10%;
+	max-width: 820px;
 }
 .sections section {
 	display: flex;
@@ -92,18 +78,18 @@ section li p {
 	-webkit-line-clamp: 2;
 	font-size: 14px;
 	font-weight: 400;
-	color: #929292;
+	color: var(--text-color);
 }
 
-section li .description {
+section .description {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 section li .price {
 	display: flex;
 	gap: 25px;
-	color: #747474;
+	color: var(--text-color);
 }
 .meal {
 	background: #fff;
