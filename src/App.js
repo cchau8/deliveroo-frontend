@@ -1,16 +1,16 @@
 import "./App.css";
-import "./components/media-queries.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import logo from "./assets/deliveroo-logo.png";
 import Hero from "./components/Hero/Hero";
 import Section from "./components/Section";
 import Cart from "./components/Cart/Cart";
+import Loading from "./components/Loading";
+import MobileCart from "./components/Cart/MobileCart";
 // FontAwesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlus, faMinus, faTimes } from "@fortawesome/free-solid-svg-icons";
-import Loading from "./components/Loading";
-library.add(faPlus, faMinus, faTimes);
+import { faPlus, faMinus, faTimes, faStar } from "@fortawesome/free-solid-svg-icons";
+library.add(faPlus, faMinus, faTimes, faStar);
 
 //import des composants
 
@@ -51,7 +51,7 @@ function App() {
 		}
 		setCart(newCart);
 	};
-
+	// Listen to cart in order to update showCart if the cart is empty
 	useEffect(() => {
 		if (cart.length === 0) {
 			setShowCart(false);
@@ -69,9 +69,7 @@ function App() {
 				{isLoading ? <Loading /> : <Hero data={data} />}
 			</header>
 			<main>
-				{isLoading ? (
-					<div></div>
-				) : (
+				{!isLoading && (
 					<>
 						<div className="container">
 							<div className="sections ">
@@ -90,29 +88,15 @@ function App() {
 										);
 									})}
 							</div>
-							<Cart cart={cart} setCart={setCart} mobile={false} />
+							<Cart cart={cart} setCart={setCart} />
 						</div>
 
-						{showCart && cart.length > 0 && (
-							<Cart
-								mobile={true}
-								cart={cart}
-								setCart={setCart}
-								showCart={showCart}
-								setShowCart={setShowCart}
-							/>
-						)}
-
-						<button
-							className={`mobile-cart${
-								cart.length === 0 && !showCart ? " grey" : ""
-							}`}
-							onClick={() => {
-								setShowCart(true);
-							}}
-						>
-							{showCart && cart.length > 0 ? "Valider " : "Voir "}le panier
-						</button>
+						<MobileCart
+							cart={cart}
+							setCart={setCart}
+							showCart={showCart}
+							setShowCart={setShowCart}
+						/>
 					</>
 				)}
 			</main>

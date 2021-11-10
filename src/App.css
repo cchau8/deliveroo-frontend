@@ -115,3 +115,15 @@ section li .price {
 .popular {
 	color: #ffa52f;
 }
+
+@media (max-width: 1073px) {
+	h1 {
+		line-height: 42px;
+	}
+	section ul {
+		padding: 0 20px;
+	}
+	section li {
+		flex: 1 1 90%;
+	}
+}

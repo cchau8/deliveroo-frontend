@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Meal = ({ meal, addToCart }) => {
 	const { title, description, price, picture, popular, id } = meal;
@@ -14,7 +15,11 @@ const Meal = ({ meal, addToCart }) => {
 				<h3>{title}</h3> <p>{description}</p>
 				<div className="price">
 					<span>{price} €</span>
-					<span className="popular">{popular && "⭐ populaire"}</span>
+					{popular && (
+						<span className="popular">
+							<FontAwesomeIcon icon="star" /> Best selling
+						</span>
+					)}
 				</div>
 			</div>
 
