@@ -43,7 +43,7 @@ const CartInfo = ({
 				</div>
 				<div className="delivery-fee">
 					<span>Frais de livraison : </span>
-					<span>{deliveryFee} €</span>
+					<span>{deliveryFee.toFixed(2)} €</span>
 				</div>
 			</div>
 			<hr />

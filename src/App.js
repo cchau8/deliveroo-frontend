@@ -104,12 +104,14 @@ function App() {
 						)}
 
 						<button
-							className={`mobile-cart${cart.length === 0 ? " grey" : ""}`}
+							className={`mobile-cart${
+								cart.length === 0 && !showCart ? " grey" : ""
+							}`}
 							onClick={() => {
 								setShowCart(true);
 							}}
 						>
-							{showCart ? "Valider " : "Voir "}le panier
+							{showCart && cart.length > 0 ? "Valider " : "Voir "}le panier
 						</button>
 					</>
 				)}
